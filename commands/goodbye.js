@@ -1,9 +1,9 @@
 async function sayGoodbye(sock, chatId, removedMembers) {
     let goodbyeText = 'Goodbye ';
     removedMembers.forEach((member) => {
-        goodbyeText += `@${member.split('@')[0]} `;
+        goodbyeText += ` `;
     });
-    goodbyeText += '👋 We will never miss you!';
+    goodbyeText += '';
 
     await sock.sendMessage(chatId, {
         text: goodbyeText,
