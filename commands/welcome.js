@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 async function welcomeNewMembers(sock, chatId, newMembers) {
-    let welcomeText = 'Welcome ';
+    let welcomeText = '';
     newMembers.forEach((member) => {
-        welcomeText += `@${member.split('@')[0]} `;
+        welcomeText += ` `;
     });
-    welcomeText += 'to the group! 🎉';
+    welcomeText += '';
 
     // Send the welcome message
     await sock.sendMessage(chatId, {
