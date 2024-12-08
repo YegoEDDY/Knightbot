@@ -20,17 +20,17 @@ async function warnCommand(sock, chatId, senderId, mentionedJidList) {
     const { isSenderAdmin, isBotAdmin } = await isAdmin(sock, chatId, senderId);
 
     if (!isBotAdmin) {
-        await sock.sendMessage(chatId, { text: 'Please make the bot an admin first.' });
+        await sock.sendMessage(chatId, { text: '' });
         return;
     }
 
     if (!isSenderAdmin) {
-        await sock.sendMessage(chatId, { text: 'Only group admins can use the warn command.' });
+        await sock.sendMessage(chatId, { text: '.' });
         return;
     }
 
     if (mentionedJidList.length === 0) {
-        await sock.sendMessage(chatId, { text: 'Please mention a user to warn.' });
+        await sock.sendMessage(chatId, { text: '' });
         return;
     }
 
@@ -51,13 +51,13 @@ async function warnCommand(sock, chatId, senderId, mentionedJidList) {
             await sock.groupParticipantsUpdate(chatId, [userToWarn], 'remove');
             delete warnings[userToWarn];  // Reset the warning count after kicking
             saveWarnings(warnings);  // Save the updated warnings
-            await sock.sendMessage(chatId, { text: `User has been kicked from the group after 3 warnings.` });
+            await sock.sendMessage(chatId, { text: `` });
         } catch (error) {
             console.error('Error kicking user from the group:', error);
-            await sock.sendMessage(chatId, { text: 'Failed to kick the user. Make sure the bot has admin privileges.' });
+            await sock.sendMessage(chatId, { text: 'F' });
         }
     } else {
-        await sock.sendMessage(chatId, { text: `User has been warned. Total warnings: ${warnings[userToWarn]}` });
+        await sock.sendMessage(chatId, { text: `` });
     }
 }
 //hi
